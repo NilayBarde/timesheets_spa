@@ -8,32 +8,7 @@
     <link rel="stylesheet" href="<%= Routes.static_path(@conn, "/css/app.css") %>"/>
   </head>
   <body>
-    <div class="container">
-      <nav class="navbar navbar-expand-sm navbar-dark bg-dark">
-        <div class="col-4">
-          <a class="navbar-brand" href="#">TimesheetsSpa</a>
-        </div>
-        <div class="col-8">
-          <ul class="navbar-nav mr-auto">
-            <li class="nav-item active">
-              <a class="nav-link" href="#">Your Timesheets</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">Timesheets</a>
-            </li>
-          </ul>
-        </div>
-      </nav>
-      <div>
-        <%= if get_flash(@conn, :info) do %>
-          <p class="alert alert-info" role="alert"><%= get_flash(@conn, :info) %></p>
-        <% end %>
-        <%= if get_flash(@conn, :error) do %>
-          <p class="alert alert-danger" role="alert"><%= get_flash(@conn, :error) %></p>
-        <% end %>
-        <%= render @view_module, @view_template, assigns %>
-      </div>
-    </div>
+    <%= render @view_module, @view_template, assigns %>    
     <script type="text/javascript" src="<%= Routes.static_path(@conn, "/js/app.js") %>"></script>
   </body>
 </html>
