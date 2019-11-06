@@ -2,6 +2,7 @@
 // The MiniCssExtractPlugin is used to separate it out into
 // its own CSS file.
 import css from "../css/app.css"
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 // webpack automatically bundles all modules in your
 // entry points. Those entry points can be configured
@@ -10,6 +11,12 @@ import css from "../css/app.css"
 // Import dependencies
 //
 import "phoenix_html"
+import init from './index'
+
+window.addEventListener("load", () => {
+    let root = document.getElementById("root")
+    init(root)
+})
 
 // Import local files
 //
