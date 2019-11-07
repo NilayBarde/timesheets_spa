@@ -35,7 +35,7 @@ class NewWorker extends React.Component {
         if(this.state.redirect)
             return <Redirect to={this.state.redirect} />
 
-        let {name, email, pay, password_hash, errors} = this.props
+        let {name, email, password_hash, errors} = this.props
         let error_msg = null
         if(errors) {
             error_msg = <Alert variant="danger">{ errors }</Alert>

@@ -35,7 +35,7 @@ class NewJob extends React.Component {
         if(this.state.redirect)
             return <Redirect to={this.state.redirect} />
 
-        let {job_code, name, budget, description, errors} = this.props
+        let {jobCode, name, budget, desc, errors} = this.props
         let error_msg = null
         if(errors) {
             error_msg = <Alert variant="danger">{ errors }</Alert>
@@ -45,10 +45,10 @@ class NewJob extends React.Component {
             <Container>
                 <h1 align="center">New Job</h1>
                 { error_msg }
-                <Form.Group controlId="job_code">
+                <Form.Group controlId="jobCode">
                     <Form.Label>Job Code</Form.Label>
                     <Form.Control type="text" 
-                        onChange={(ev) => {this.changed({job_code: ev.target.value})}}
+                        onChange={(ev) => {this.changed({jobCode: ev.target.value})}}
                     />
                 </Form.Group>
                 <Form.Group controlId="name">
@@ -63,11 +63,11 @@ class NewJob extends React.Component {
                         onChange={(ev) => {this.changed({budget: ev.target.value})}}
                     />
                 </Form.Group>
-                <Form.Group controlId="description">
+                <Form.Group controlId="desc">
                      <Form.Label>Description</Form.Label>
-                     <textarea className="form-control" onChange={(ev) => {this.changed({description: ev.target.value})}} />
+                     <textarea className="form-control" onChange={(ev) => {this.changed({desc: ev.target.value})}} />
                 </Form.Group>
-                <Button variant="primary" onClick={() => {add_job(this)}}>Create</Button>
+                <Button variant="bg-dark" onClick={() => {add_job(this)}}>Create</Button>
             </Container>
         )
     }

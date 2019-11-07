@@ -10,7 +10,7 @@ function login(st0 = {email: "", password: "", type: "worker", errors: null}, ac
     }
 }
 
-function new_job(st0 = {job_code: "", name: "", budget: 0, desc: "", error: null, manager_id: null}, action) {
+function new_job(st0 = {jobCode: "", name: "", budget: 0, desc: "", error: null, manager_id: null}, action) {
     switch(action.type) {
         case 'CHANGE_NEW_JOB': 
             return Object.assign({}, st0, action.data)
@@ -41,7 +41,7 @@ function workers(st0 = new Map(), action) {
     switch(action.type) {
         case 'GET_USER_LIST':
             let st1 = new Map(st0)
-            action.data.workers.forEach((worker) => {
+            action.data.forEach((worker) => {
                 st1.set(worker.id, worker)
             })
             return st1
