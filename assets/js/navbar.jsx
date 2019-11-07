@@ -1,10 +1,12 @@
 import React from 'react'
-import {Navbar, Nav} from 'react-bootstrap'
-import {NavLink} from 'react-router-dom'
+import { Navbar, Nav } from 'react-bootstrap'
+import { NavLink } from 'react-router-dom'
 import { Provider, connect } from 'react-redux';
 import { Redirect } from 'react-router'
 import { Route } from 'react-router-dom'
+
 import store from './store'
+
 export default function Navigation(props) {
     return(
         <Navbar bg="dark" variant="dark" expand="lg">
@@ -37,11 +39,6 @@ let Session = connect(({ session }) => ({ session }))(({ session, dispatch }) =>
                     </NavLink>
                 </Nav.Item>
                 <Nav.Item>
-                    <NavLink to="/jobs" exact className="nav-link" activeClassName="active">
-                        Jobs
-                    </NavLink>
-                </Nav.Item>
-                <Nav.Item>
                     <NavLink to="/" activeClassName="active" exact className="nav-link"
                         onClick={logout}>Logout</NavLink>
                 </Nav.Item>
@@ -50,6 +47,9 @@ let Session = connect(({ session }) => ({ session }))(({ session, dispatch }) =>
     } else {
         return (
             <Nav className="ml-auto">
+		<Nav.Item>
+		<NavLink to="/" activeClassName="active" exact className="nav-link">Home</NavLink>
+		</Nav.Item>
                 <Nav.Item>
                     <NavLink to="/register" activeClassName="active" exact className="nav-link">Register</NavLink>
                 </Nav.Item>

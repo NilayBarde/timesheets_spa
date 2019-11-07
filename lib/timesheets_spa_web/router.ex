@@ -22,7 +22,6 @@ defmodule TimesheetsSpaWeb.Router do
 
     resources "/managers", ManagerController
     resources "/workers", WorkerController
-    resources "/jobs", JobController
     resources "/sessions", SessionController, only: [:create], singleton: true
 
 

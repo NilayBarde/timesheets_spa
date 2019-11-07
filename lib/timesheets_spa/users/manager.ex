@@ -7,6 +7,8 @@ defmodule TimesheetsSpa.Users.Manager do
     field :name, :string
     field :password_hash, :string
 
+    has_many :workers, TimesheetsSpa.Users.Worker
+    has_many :jobs, TimesheetsSpa.Jobs.Job
     timestamps()
   end
 
@@ -19,7 +21,7 @@ defmodule TimesheetsSpa.Users.Manager do
   end
 
   def hash_password(cset) do
-    pw = get_change(cset, :password_hash)
-    Map.put(cset, :password_hash, Argon2.add_hash(pw).password_hash)
+    pw = get_change(cset, :password)
+    change(cset, Argon2.add_hash(pw))
   end
 end

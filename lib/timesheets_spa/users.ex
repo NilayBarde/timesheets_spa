@@ -146,6 +146,7 @@ defmodule TimesheetsSpa.Users do
 
   """
   def create_worker(attrs \\ %{}) do
+    IO.inspect attrs
     %Worker{}
     |> Worker.changeset(attrs)
     |> Repo.insert()
@@ -198,7 +199,7 @@ defmodule TimesheetsSpa.Users do
     Worker.changeset(worker, %{})
   end
 
-def authenticate_user(email, pass, user_type) do
+  def authenticate_user(email, pass, user_type) do
     if user_type == "worker" do
       user = Repo.get_by(Worker, email: email)
       case Argon2.check_pass(user, pass) do
@@ -214,7 +215,7 @@ def authenticate_user(email, pass, user_type) do
     end
   end
 
-def get_manager_with_workers(id) do
+  def get_manager_with_workers(id) do
     Repo.one! from m in Manager,
       where: m.id == ^id,
       preload: [:workers]

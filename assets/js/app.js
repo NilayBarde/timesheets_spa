@@ -10,7 +10,7 @@ import css from "../css/app.scss"
 // Import dependencies
 //
 import "phoenix_html"
-import init from './index'
+import init from './page'
 
 window.addEventListener("load", () => {
     let root = document.getElementById("root")

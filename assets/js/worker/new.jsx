@@ -63,7 +63,7 @@ class NewWorker extends React.Component {
                         onChange={(ev) => {this.changed({password_hash: ev.target.value})}}
                     />
                 </Form.Group>
-                <Button variant="primary" onClick={() => {add_worker(this)}}>Create</Button>
+                <Button variant="dark" onClick={() => {add_worker(this)}}>Create</Button>
             </Container>
         )
     }
