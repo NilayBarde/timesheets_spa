@@ -4,11 +4,13 @@ import {BrowserRouter as Router, Redirect, Switch, Route, NavLink, Link} from 'r
 import { Provider, connect } from 'react-redux';
 
 //Components and function
-import Navigation from './components/navbar'
+import Navigation from './navbar'
 import {getManager} from './ajax'
-import Login from './components/login'
-import ManagerDashboard from './components/manager/dashboard'
-import JobsDashboard from './components/jobs/jobs'
+import Login from './login'
+import ManagerDashboard from './manager/dashboard'
+import JobsDashboard from './jobs/jobs'
+import NewJob from './jobs/new'
+import NewWorker from './worker/new'
 
 
 import store from './store'
@@ -29,14 +31,20 @@ function Index(props) {
             <Switch>
                 <Route exact path="/" component={Login}>
                 </Route>
-                <Route exact path="/signup">
-                    SignUp
+                <Route exact path="/register">
+                    Register
                 </Route>
                 <PrivateRoute path="/manager/dashboard">
                     <ManagerDashboard />
                 </PrivateRoute>
                 <PrivateRoute path="/jobs">
                     <JobsDashboard />
+                </PrivateRoute>
+	         <PrivateRoute path="/new_job">
+                    <NewJob />
+                </PrivateRoute>
+                <PrivateRoute path="/new_worker">
+                    <NewWorker />
                 </PrivateRoute>
             </Switch>
         </Router>

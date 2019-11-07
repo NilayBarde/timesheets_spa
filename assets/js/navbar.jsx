@@ -4,10 +4,10 @@ import {NavLink} from 'react-router-dom'
 import { Provider, connect } from 'react-redux';
 import { Redirect } from 'react-router'
 import { Route } from 'react-router-dom'
-import store from '../store'
+import store from './store'
 export default function Navigation(props) {
     return(
-        <Navbar bg="primary" variant="dark" expand="lg">
+        <Navbar bg="dark" variant="dark" expand="lg">
             <Navbar.Brand>Timesheets</Navbar.Brand>
             <Navbar.Toggle className="ml-auto" aria-controls="basic-navbar-nav"/>
             <Navbar.Collapse id="basic-navbar-nav" className="justify-content-end">
@@ -51,7 +51,7 @@ let Session = connect(({ session }) => ({ session }))(({ session, dispatch }) =>
         return (
             <Nav className="ml-auto">
                 <Nav.Item>
-                    <NavLink to="/signup" activeClassName="active" exact className="nav-link">Signup</NavLink>
+                    <NavLink to="/register" activeClassName="active" exact className="nav-link">Register</NavLink>
                 </Nav.Item>
             </Nav>
         )

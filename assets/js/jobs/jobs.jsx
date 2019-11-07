@@ -1,8 +1,9 @@
 import React from 'react'
 import ReactDom from 'react-dom'
 import { connect } from 'react-redux'
-import { get_jobs } from '../../ajax'
-import store from '../../store'
+import {NavLink} from 'react-router-dom'
+import { get_jobs } from '../ajax'
+import store from '../store'
 
 const jobList = connect(({ jobs }) => ({ jobs }))(({ jobs }) => {
     if(jobs.size == 0)
@@ -11,17 +12,18 @@ const jobList = connect(({ jobs }) => ({ jobs }))(({ jobs }) => {
     let renderJobs = Array.from(jobs, ([key, job]) => {
         return(
             <tr key={key}>
-                <td>{job.job_code}</td>
+                <td>{job.jobCode}</td>
                 <td>{job.name}</td>
                 <td>${job.budget}</td>
                 <td>{job.manager.name}</td>
-                <td>{job.description}</td>
+                <td>{job.desc}</td>
             </tr>
         )
     })
     return (
         <div className="container">
             <h1>Existing Jobs</h1>
+	    <NavLink className="btn btn-dark ml-auto d-block add-btn" to="/new_job">+ New Job</NavLink>
             <table className="table">
                 <thead>
                     <tr>

@@ -213,4 +213,22 @@ def authenticate_user(email, pass, user_type) do
       end
     end
   end
+
+def get_manager_with_workers(id) do
+    Repo.one! from m in Manager,
+      where: m.id == ^id,
+      preload: [:workers]
+  end
+
+  def get_user_by_email(email) do
+    workers = Repo.all from w in Worker,
+                where: w.email == ^email
+    managers = Repo.all from m in Manager,
+                where: m.email == ^email
+    if length(workers) > 0 or length(managers) > 0 do
+      true
+    else
+      false
+    end
+  end
 end

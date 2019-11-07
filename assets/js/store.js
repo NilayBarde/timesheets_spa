@@ -1,19 +1,6 @@
 import { createStore, combineReducers } from 'redux'
 import deepFreeze from 'deep-freeze-strict'
 
-/* Structure of store data
- * {
-     forms: {
-         login: {...},
-         timesheet: {...},
-         job: {...},
-         createWorker: {...},
-     },
-     workers: Map.new(),
-     jobs: Map.new()
- * }
-*/
-
 function login(st0 = {email: "", password: "", type: "worker", errors: null}, action) {
     switch(action.type) {
         case 'CHANGE_LOGIN':
@@ -23,9 +10,29 @@ function login(st0 = {email: "", password: "", type: "worker", errors: null}, ac
     }
 }
 
+function new_job(st0 = {job_code: "", name: "", budget: 0, desc: "", error: null, manager_id: null}, action) {
+    switch(action.type) {
+        case 'CHANGE_NEW_JOB': 
+            return Object.assign({}, st0, action.data)
+        default:
+            return st0
+    }
+}
+
+function new_worker(st0 = {name: "", email: "", password_hash: "", manager_id: null, errors: null}, action) {
+    switch(action.type) {
+        case 'CHANGE_NEW_WORKER':
+            return Object.assign({}, st0, action.data)
+        default:
+            return st0
+    }
+}
+
 function forms(st0, action) {
     let reducer = combineReducers({
-        login
+        login,
+        new_job,
+        new_worker
     })
     return reducer(st0, action)
 }
@@ -38,6 +45,14 @@ function workers(st0 = new Map(), action) {
                 st1.set(worker.id, worker)
             })
             return st1
+        case 'NEW_WORKER':
+            st1 = new Map(st0)
+            st1.set(action.data.id, action.data)
+            return st1
+        case 'DELETE_WORKER':
+            st1 = new Map(st0)
+            st1.delete(action.data)
+            return st1
         default:
             return st0
     }
@@ -47,10 +62,13 @@ function jobs(st0 = new Map(), action) {
     switch(action.type) {
         case 'GET_JOBS':
             let st1 = new Map(st0)
-            console.log(action.data)
             action.data.forEach((job) => {
                 st1.set(job.id, job)
             })
+            return st1
+        case 'NEW_JOB':
+            st1 = new Map(st0)
+            st1.set(action.data.id, action.data)
             return st1
         default:
             return st0

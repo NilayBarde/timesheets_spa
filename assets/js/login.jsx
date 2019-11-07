@@ -3,9 +3,9 @@ import ReactDom from 'react-dom'
 import { connect } from 'react-redux'
 import { Form, Container, Button, Alert } from 'react-bootstrap'
 import { Redirect } from 'react-router'
-import store from '../store'
+import store from './store'
 
-import { submit_login } from '../ajax'
+import { submit_login } from './ajax'
 
 class Login extends React.Component {
     constructor(props) {
@@ -63,7 +63,7 @@ class Login extends React.Component {
                     <Form.Check type="radio" label="Manager" name="user_type" 
                         value="manager" onChange={ev => this.changed({type: ev.target.value})} />
                 </Form.Group>
-                <Button variant="primary" onClick={() => {submit_login(this)}}>Login</Button>
+                <Button variant="dark" onClick={() => {submit_login(this)}}>Login</Button>
             </Container>
         )
     }

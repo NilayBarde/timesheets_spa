@@ -19,7 +19,7 @@ defmodule TimesheetsSpa.Users.Manager do
   end
 
   def hash_password(cset) do
-    pw = get_change(cset, :password)
-    change(cset, Argon2.add_hash(pw))
+    pw = get_change(cset, :password_hash)
+    Map.put(cset, :password_hash, Argon2.add_hash(pw).password_hash)
   end
 end
