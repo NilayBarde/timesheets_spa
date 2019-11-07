@@ -31,7 +31,7 @@ function workers(st0 = new Map(), action) {
     switch(action.type) {
         case 'GET_USER_LIST':
             let st1 = new Map(st0)
-            action.data.forEach((worker) => {
+            action.data.workers.forEach((worker) => {
                 st1.set(worker.id, worker)
             })
             return st1
@@ -65,8 +65,7 @@ function root_reducer(st0, action) {
     let reducer = combineReducers({
         forms,
         session,
-        workers,
-        jobs
+        workers
     })
     return deepFreeze(reducer(st0, action))
 }

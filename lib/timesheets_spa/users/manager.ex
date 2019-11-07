@@ -8,7 +8,6 @@ defmodule TimesheetsSpa.Users.Manager do
     field :password_hash, :string
 
     has_many :workers, TimesheetsSpa.Users.Worker
-    has_many :jobs, TimesheetsSpa.Jobs.Job
     timestamps()
   end
 
