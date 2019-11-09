@@ -1,0 +1,36 @@
+
+Web Dev Fall 2019 HW07 Status
+
+Answer the following questions:
+
+
+1. What's your name?
+
+Nilay Barde
+
+2. What's the URL of the github repo with your work for this HW?
+
+https://github.com/NilayBarde/timesheets_spa
+
+3. What's the version number of your github release?
+
+0294bc4
+
+
+4. What's the URL that you deployed to?
+
+time2.bardenilay.com
+
+5. Is your app functionality complete? If not, what's missing?
+
+No, Missing timesheets adds and jobs
+
+6. Is your app properly deployed? If not, what went wrong?
+
+Yes
+
+
+And here's a list of tasks for grading comments. Just leave this here:
+ - Development
+ - Deployment
+ - Submission
