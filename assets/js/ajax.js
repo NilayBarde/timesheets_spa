@@ -3,6 +3,7 @@ import store from './store'
 export function post(path, body) {
   let state = store.getState()
   let session = state.session
+  let token = state.session.token;
 
     return fetch('/ajax' + path, {
         method: 'post',
@@ -11,10 +12,25 @@ export function post(path, body) {
           'x-csrf-token': window.csrf_token,
           'content-type': "application/json; charset=UTF-8",
           'accept': 'application/json',
-          'x-auth': session ? session.token : "",
+          'x-auth': token || "",
         }),
         body: JSON.stringify(body),
       }).then((resp) => resp.json())
+}
+
+export function remove(path) {
+  let state = store.getState()
+  let session = state.session
+    return fetch('/ajax' + path, {
+        method: 'delete',
+        credentials: 'same-origin',
+        headers: new Headers({
+          'x-csrf-token': window.csrf_token,
+          'content-type': "application/json; charset=UTF-8",
+          'accept': 'application/json',
+          'x-auth': token || "",
+        }),
+      })
 }
 
 export function get(path) {
@@ -27,7 +43,7 @@ export function get(path) {
           'x-csrf-token': window.csrf_token,
           'content-type': "application/json; charset=UTF-8",
           'accept': 'application/json',
-          'x-auth': session ? session.token : "",
+          'x-auth': token || "",
         })
     }).then(resp => resp.json())
 }
@@ -84,5 +100,4 @@ export function add_worker(form) {
     }
   })
 }
-
 
